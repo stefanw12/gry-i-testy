@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
     <script>
+        let opinia;
         let czyPisać = confirm("czy chcesz pisać?");
         if (czyPisać) {
             let wyswietl = prompt("napisz tytuł tej strony");
@@ -25,11 +26,11 @@
                 $("body").append("<p>Niczego nie wpisałeś. ale może zagrasz w którąś grę?</p>");
             } else {
                 $("body").append("<p>Świetnie! może zagrasz w jakąś grę?</p>");
-                confirm("czy podobał ci się ten program?")
+                opinia = confirm("czy podobał ci się ten program?")
                 alert("Dzięki za opinie!")
             }
         };
     </script>
-    <p><a href="file:///home/pi/javascript/html/Szubiennica.html" title="Szubienica napisana w javascript!">Kliknij tutaj</a> aby zagrać w Szubienice <a href="file:///home/pi/javascript/html/znajdzUkrytySkarb.html" title="gra z podpowiedziami typu Zimno Gorąco Parzy!">Albo tutaj</a> żeby zagrać w grę znajdz ukryty skarb!</p>
+    <p><a href="file:///home/pi/javascript/html/gry-i-testy/gry/Szubiennica.html" title="Szubienica napisana w javascript!">Kliknij tutaj</a> aby zagrać w Szubienice <a href="file:///home/pi/javascript/html/gry-i-testy/gry/znajdzUkrytySkarb.html" title="gra z podpowiedziami typu Zimno Gorąco Parzy!">Albo tutaj</a> żeby zagrać w grę znajdz ukryty skarb!</p>
 </body>
 </html>

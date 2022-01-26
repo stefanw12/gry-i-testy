@@ -23,11 +23,11 @@
         let gra2;
         let liczbaCzasu = 1;
 
-        let czasomierz = function (doIlu) {
-            
-            let czasomierzPetla = setInterval(function () {
+        let czasomierz = function(doIlu) {
+
+            let czasomierzPetla = setInterval(function() {
                 liczbaCzasu++;
-                
+
                 if (liczbaCzasu >= doIlu) {
                     ctx.save();
                     zakonczGre("GAME OVER");
@@ -37,7 +37,7 @@
             }, 1000);
         };
 
-        let rozpocznij = function () {
+        let rozpocznij = function() {
             ctx.font = "30px Arial"
             ctx.fillStyle = kolory[6];
             ctx.textAlign = "center";
@@ -47,7 +47,7 @@
             ctx.fillText("naciśnij tab żeby przyspieszyć albo Backspace żeby zwolnić.", szerokosc / 2, (wysokosc + 50) / 2);
         };
 
-        let okrag = function (x, y, promien, wypelnijOkrag) {
+        let okrag = function(x, y, promien, wypelnijOkrag) {
             ctx.beginPath();
             ctx.arc(x, y, promien, 0, Math.PI * 2, false);
             if (wypelnijOkrag) {
@@ -57,7 +57,7 @@
             }
         };
 
-        let wyswietlLiczbe = function (liczba, x, y) {
+        let wyswietlLiczbe = function(liczba, x, y) {
             ctx.font = "20px Courier";
             ctx.textAlign = "left";
             ctx.textBaseline = "top";
@@ -65,7 +65,7 @@
             ctx.fillText(liczba, x, y);
         };
 
-        let zakonczGre = function (tekst) {
+        let zakonczGre = function(tekst) {
             clearInterval(gra1);
             clearInterval(gra2);
             ctx.font = "40px Comic Sans MS";
@@ -75,18 +75,18 @@
             ctx.fillText(tekst, szerokosc / 2, wysokosc / 2);
         };
 
-        let wylosujSlowo = function (slowa) {
+        let wylosujSlowo = function(slowa) {
             return slowa[Math.floor(Math.random() * slowa.length)];
         };
 
-        let Pilka = function () {
+        let Pilka = function() {
             this.x = szerokosc / 2;
             this.y = wysokosc / 2;
             this.xSzybkosc = 5;
             this.ySzybkosc = 0;
         };
 
-        Pilka.prototype.przesuwaj = function (Pilka2) {
+        Pilka.prototype.przesuwaj = function(Pilka2) {
             this.x += this.xSzybkosc;
             this.y += this.ySzybkosc;
             if (Pilka2) {
@@ -106,14 +106,14 @@
             }
         };
 
-        Pilka.prototype.rysuj = function (drugaPilka) {
+        Pilka.prototype.rysuj = function(drugaPilka) {
             if (drugaPilka) {
                 okrag(this.x, this.y, 30, true);
             } else {
                 okrag(this.x, this.y, 10, true);
             }
         };
-        Pilka.prototype.ustawKierunek = function (kierunek) {
+        Pilka.prototype.ustawKierunek = function(kierunek) {
             if (kierunek === "gora") {
                 this.xSzybkosc = 0;
                 this.ySzybkosc = -5;
@@ -135,21 +135,21 @@
                 this.xSzybkosc -= 3;
             }
         };
-        Pilka.prototype.porownaj = function (innaPilka) {
+        Pilka.prototype.porownaj = function(innaPilka) {
             return (this.x <= innaPilka.x + 25 && this.x >= innaPilka.x - 25) && (this.y <= innaPilka.y + 25 && this.y >= innaPilka.y - 25);
         };
-        Pilka.prototype.przemiesc = function () {
+        Pilka.prototype.przemiesc = function() {
             this.x = Math.floor(Math.random() * szerokosc - 10);
             this.y = Math.floor(Math.random() * wysokosc - 25);
         };
 
-        let Kwadrat = function (x, y, kierunek) {
+        let Kwadrat = function(x, y, kierunek) {
             this.x = x;
             this.y = y;
             this.kierunek = kierunek;
         };
 
-        Kwadrat.prototype.rysuj = function () {
+        Kwadrat.prototype.rysuj = function() {
             ctx.fillRect(this.x, this.y, 30, 30);
         };
 
@@ -163,23 +163,23 @@
             38: "gora",
             39: "prawa",
             40: "dol",
-            9 : "tab",
-            8 : "Backspace" 
+            9: "tab",
+            8: "Backspace"
         };
 
-        $("body").keydown(function (zdarzenie) {
+        $("body").keydown(function(zdarzenie) {
             let kierunek = klawisze[zdarzenie.keyCode];
             pilka.ustawKierunek(kierunek);
         });
 
         rozpocznij();
-        let rozpoczecie = setTimeout(function () {
+        let rozpoczecie = setTimeout(function() {
             gra();
         }, 4500);
 
         function gra() {
             czasomierz(41);
-            gra1 = setInterval(function () {
+            gra1 = setInterval(function() {
                 ctx.clearRect(0, 0, szerokosc, wysokosc);
 
                 ctx.drawImage(img, 0, 0);
@@ -210,7 +210,7 @@
                 ctx.strokeRect(0, 0, szerokosc, wysokosc);
             }, 30);
 
-            gra2 = setInterval(function () {
+            gra2 = setInterval(function() {
                 let kolor = wylosujSlowo(kolory);
 
                 ctx.fillStyle = kolor;
